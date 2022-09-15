@@ -1,7 +1,7 @@
 const LinkedList = require("./LinkedList/linkedList")
 
 const newList=new LinkedList();
-newList.append(2);
-newList.append(1);
-newList.append(0);
-console.log(newList);
+newList.insert(3);
+newList.insert(2);
+newList.insert(1);
+console.log(newList.deleteMiddle());

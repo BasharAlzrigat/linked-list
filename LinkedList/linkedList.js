@@ -40,5 +40,41 @@ class LinkedList {
     
         return this;
       }
+
+      deleteMiddle(){
+        let length = this.length - 1
+        let currentNode;
+        let nextNode = this.head.next
+        let oldNode;
+        if (this.length === 1) {
+            return "exeption"
+        }
+        if(this.length === 2){
+            this.head.next  = null
+            this.tail = null
+            this.length--;
+            return this
+        }
+        if ( this.length === 3) {
+            this.head.next = this.tail
+            this.length--;
+            return this
+        }
+        if(this.length % 2 !== 0 ){
+            length = length/2
+        }else {length = Math.ceil(length/2)}
+            for (let i = 0; i < length; i++) {
+                if(!currentNode) {
+                    currentNode = this.head
+                }else{
+                    oldNode = currentNode;
+                    currentNode = nextNode
+                    nextNode = nextNode.next
+                } 
+            }
+            currentNode.next = nextNode 
+            this.length--;
+            return this
+      }
 }
 module.exports = LinkedList
