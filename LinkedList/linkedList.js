@@ -76,5 +76,53 @@ class LinkedList {
             this.length--;
             return this
       }
+
+      insertAfter(value, newValue) {
+        let nodePosition = this.head;
+        while (nodePosition.value !== value) {
+          if (!nodePosition.next) {
+            if (nodePosition.value === value) {
+              break;
+            } else {
+              return 'The number is not in the node';
+            }
+          }
+          nodePosition = nodePosition.next;
+        }
+        let newNode = new Node(newValue);
+        if (!nodePosition.next) {
+          nodePosition.next = newNode;
+          this.tail = newNode;
+        } else {
+          let nextNode = nodePosition.next;
+          nodePosition.next = newNode;
+          newNode.next = nextNode;
+        }
+      }
+    
+      insertBefore(value, newValue) {
+        let nodePosition = this.head;
+        let saveNodeBefore = this.head;
+        while (nodePosition.value !== value) {
+          if (!nodePosition.next) {
+            if (nodePosition.value === value) {
+              break;
+            } else {
+              return 'The number is not in the node';
+            }
+          }
+          saveNodeBefore = nodePosition;
+          nodePosition = nodePosition.next;
+        }
+        let newNode = new Node(newValue);
+        if (saveNodeBefore === nodePosition) {
+          saveNodeBefore = newNode;
+          newNode.next = nodePosition;
+          this.head = newNode;
+        } else {
+          saveNodeBefore.next = newNode;
+          newNode.next = nodePosition;
+        }
+      }
 }
 module.exports = LinkedList
