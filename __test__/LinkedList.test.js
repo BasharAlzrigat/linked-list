@@ -1,7 +1,7 @@
 const LinkedList = require('../LinkedList/linkedList');
 
 
-describe('Linked List Test', () => {
+describe('Linked List Test!!', () => {
     it('Test if creation of linkedlist works', () => {
       let newLinkedList = new LinkedList();
       expect(newLinkedList.head).toBeNull();
